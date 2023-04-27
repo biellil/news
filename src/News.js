@@ -9,8 +9,7 @@ const News = ({ searchTerm }) => {
       const apiKey1 = '3d0ab2706140439e96fa67e27e28993d';
       const apiKey2 = 'c4a8f4bbbf3b4acdacc94cce2b8fa875';
       const apiUrl1 = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=${apiKey1}`;
-      const apiUrl2 = `https://api.worldnewsapi.com/search-news?language=en&keyword=${searchTerm}&api_key=${apiKey2}`;
-      
+      const apiUrl2 = `https://api.worldnewsapi.com/search-news?api-key=${apiKey2}&text=${searchTerm}`;
       let result;
 
       try {
@@ -35,6 +34,15 @@ const News = ({ searchTerm }) => {
 
   return (
     <div>
+    {articles && articles.length > 0 && articles.map((article) => (
+      <div key={article.title}>
+        <h3>{article.title}</h3>
+        <p>{article.description}</p>
+      </div>
+    ))}
+  </div>
+
+   /* <div>
       {articles.map((article) => (
         <div key={article.title}>
           <h3>{article.title}</h3>
@@ -42,7 +50,8 @@ const News = ({ searchTerm }) => {
         </div>
       ))}
     </div>
-  );
+  );*/
+  )
 };
 
 export default News;
