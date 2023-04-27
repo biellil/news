@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import News from './News';
 
 const App = () => {
@@ -19,10 +20,11 @@ const App = () => {
     }
   };
 
-  const handleSearchButtonClick = () => {
-    // Disparar a pesquisa aqui
-    console.log('Pesquisar por', searchTerm);
-  }
+  const handleSearchButtonClick = async () => {
+    if (searchTerm.trim() !== '') {
+      await fetchData(searchTerm);
+    }
+  };
 
   return (
     <div>
@@ -41,3 +43,4 @@ const App = () => {
 };
 
 export default App;
+
