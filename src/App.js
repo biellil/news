@@ -19,6 +19,11 @@ const App = () => {
     }
   };
 
+  const handleSearchButtonClick = () => {
+    // Disparar a pesquisa aqui
+    console.log('Pesquisar por', searchTerm);
+  }
+
   return (
     <div>
       <h1>Últimas notícias</h1>
@@ -29,6 +34,7 @@ const App = () => {
         onBlur={handleBlur}
         placeholder="Digite o nome do fã"
       />
+      <button onClick={handleSearchButtonClick}>Pesquisar</button>
       <News searchTerm={searchTerm} />
     </div>
   );
