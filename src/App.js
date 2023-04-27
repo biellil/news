@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import News from './News';
 
-function App() {
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (event) => {
+    const value = event.target.value;
+    if (value.trim() === '') {
+      setSearchTerm('');
+    } else {
+      setSearchTerm(value);
+    }
+  };
+
+  const handleBlur = () => {
+    if (searchTerm.trim() === '') {
+      setSearchTerm('');
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Últimas notícias</h1>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleSearch}
+        onBlur={handleBlur}
+        placeholder="Digite o nome do fã"
+      />
+      <News searchTerm={searchTerm} />
     </div>
   );
-}
+};
 
 export default App;
